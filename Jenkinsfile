@@ -18,12 +18,12 @@ pipeline {
             steps {
                 script {
                     sh """
-                          terraform init \
-                          -var 'AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID' \
-                          -var 'AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY' \
-                          -var 'TF_VAR_CLOUDFRONT_IP=$TF_VAR_CLOUDFRONT_IP' \ 
-                          -input=false
-                     """
+                terraform init \
+                    -var 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}' \
+                    -var 'AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}' \
+                    -var 'TF_VAR_CLOUDFRONT_IP=${TF_VAR_CLOUDFRONT_IP}' \
+                    -input=false
+            """
                 }
             }
         }
