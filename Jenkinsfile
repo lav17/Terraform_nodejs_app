@@ -17,7 +17,13 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    sh 'terraform init -input=false' 
+                    sh """
+                          terraform init \
+                          -var 'AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID' \
+                          -var 'AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY' \
+                          -var 'TF_VAR_CLOUDFRONT_IP=$TF_VAR_CLOUDFRONT_IP' \ 
+                          -input=false
+                     """
                 }
             }
         }
@@ -25,7 +31,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    sh 'terraform apply -auto-approve' 
+                    sh 'terraform apply -auto-approve  
                 }
             }
         }
