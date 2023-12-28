@@ -1,3 +1,4 @@
 *.hcl
 *.backup
 *.tfstate
+*.exe
