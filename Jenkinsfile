@@ -10,11 +10,12 @@ pipeline {
     stages {
         stage('Build project') {
             steps {
-                git url : "https://github.com/lav17/Terraform_nodejs_app.git" , branch : "master"
+                git 'https://github.com/lav17/Terraform_nodejs_app.git'
             }
         }
 
         stage('Terraform Init') {
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'f69d8b70-3d94-4abe-90c8-9cb608f1a66b', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {     
             steps {
                 script {
                     sh """
