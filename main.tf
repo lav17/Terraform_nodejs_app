@@ -8,16 +8,16 @@ terraform {
 }
 
 
-variable "access_key" {}
-variable "secret_key" {}
-variable "cloudfront_ips" {}
+variable "AWS_ACCESS_KEY_ID" {}
+variable "AWS_SECRET_ACCESS_KEY" {}
+variable "TF_VAR_CLOUDFRONT_IP" {}
 variable "key_name" {}
 variable "ec2_ami_id" {}
 
 # Configure the AWS Provider
 provider "aws" {
-  access_key = var.access_key
-  secret_key = var.secret_key
+  access_key = var.AWS_ACCESS_KEY_ID
+  secret_key = var.AWS_SECRET_ACCESS_KEY
   region     = "ap-south-1"
 }
 
@@ -38,7 +38,7 @@ resource "aws_security_group" "allow_tls" {
     from_port       = 3000
     to_port         = 3000
     protocol        = "tcp"
-    prefix_list_ids = [var.cloudfront_ips]
+    prefix_list_ids = [var.TF_VAR_CLOUDFRONT_IP]
   }
 
   ingress {
