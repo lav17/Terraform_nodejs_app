@@ -23,7 +23,7 @@ provider "aws" {
 
 
 # define ec2
-#SG resource
+#SG resource details
 data "aws_vpc" "default" {
   default = true
 }
