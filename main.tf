@@ -11,14 +11,18 @@ terraform {
 variable "AWS_ACCESS_KEY_ID" {}
 variable "AWS_SECRET_ACCESS_KEY" {}
 variable "TF_VAR_CLOUDFRONT_IP" {}
+variable "aws_region" {
+
+}
 variable "key_name" {}
 variable "ec2_ami_id" {}
+
 
 # Configure the AWS Provider
 provider "aws" {
   access_key = var.AWS_ACCESS_KEY_ID
   secret_key = var.AWS_SECRET_ACCESS_KEY
-  region     = "ap-south-1"
+  region     = var.aws_region
 }
 
 
@@ -130,6 +134,3 @@ resource "aws_cloudfront_distribution" "ec2_distribution" {
     cloudfront_default_certificate = true # required for usser to access the content over cloudfront domain
   }
 }
-
-
-
