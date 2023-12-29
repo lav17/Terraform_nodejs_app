@@ -1,9 +1,9 @@
-Create a terraform.tfvar file and include the followinf - 
+# Terraform Node Application Cloudfront
 
-* access_key     = ""
-* secret_key     = ""
-* ec2_ami_id     = ""
-* cloudfront_ips = ""
-* key_name       = ""
+1. Create a new pipeline on jenkins.
+2. Select "Pipeline script from SCM".
+3. Mentiona the Github repository and path to Jenkinsfile.
+4. Save & Apply
+5. Click on build now.
 
-->Fill in the required details
+Note : create the credentials in Jenkins by installing AWS Credential plugin and name it is as AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. Create a secret text for variable TF_VAR_CLOUDFRONT_IP and mention the Prefix list id of Cludfront IP's.
